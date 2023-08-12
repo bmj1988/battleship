@@ -13,17 +13,19 @@ const generateNewID = () => {
 }
 
 const populateBoard = function(board) {
+    console.log(board)
     const gameboard = document.getElementById('gameboard')
-    for (let i = 0; i < board.length; i++) {
-        for (let j = 0; j < board[0].length; j++) {
+    for (let i = 0; i < board.grid.length; i++) {
+        for (let j = 0; j < board.grid[i].length; j++) {
+            console.log(`i `, board.grid[i][j])
             let newDiv = document.createElement('div');
             newDiv.id = generateNewID();
-            newDiv.class = 'square'
+            newDiv.className = 'square'
             gameboard.appendChild(newDiv)
         }
     }
 }
-    console.log(generateNewID())
+
     populateBoard(board)
     // for loop, for loop board[i][j]
     //board[i][j] = currentSquare
