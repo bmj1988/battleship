@@ -32,18 +32,24 @@ const populateBoard = function(board) {
     //create new div with idNumber
     //append div to gameboard, give id = generateNewId(), give class .square for css style
 
-
-//clicking a square
-
 gameboard.addEventListener("click", (e) => {
     const coor = e.target.id.split(", ");
-    if (board.makeHit(coor[0], coor[1])) {
-        e.target.style.backgroundColor = "green";
-        e.target.innerText = board.grid[coor[0]][coor[1]];
-        // console.log(board.grid[coor[0], coor[1]]);
-    } else {
-        e.target.style.backgroundColor = 'red';
+    if (!board.isGameOver()) {
+        if (board.makeHit(coor[0], coor[1])) {
+            e.target.style.backgroundColor = "green";
+            e.target.innerText = board.grid[coor[0]][coor[1]];
+            // console.log(board.grid[coor[0], coor[1]]);
+        } else {
+            e.target.style.backgroundColor = 'red';
+        }
+        if (board.isGameOver()) {
+            document.getElementById("gameover").innerText = "GAME OVER!";
+        }
     }
 
+
+
+
 });
+
 }
